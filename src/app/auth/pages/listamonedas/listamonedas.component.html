@@ -1,0 +1,29 @@
+<div class="container-center">
+  <div class="card width-100 border-radius-11 no-margin">
+    <div class="row width-100 padding-2 border-bottom-707070 no-margin">
+      <div class="col">
+        <h3 class="texto-titulo">Listar monedas disponibles</h3>
+      </div>
+    </div>
+    <div class="padding-2">
+      <table class="table">
+        <thead class="">
+          <tr>
+            <th scope="col">#</th>
+            <th scope="col">Simbolo</th>
+            <th scope="col">Nombre</th>
+            <th scope="col">Tasa de cambio</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor="let item of Monedas">
+            <th>{{ item.idmoneda }}</th>
+            <td>{{ item.simbolo }}</td>
+            <td>{{ item.nombremoneda }}</td>
+            <td>{{ item.tasacambio }}</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</div>
