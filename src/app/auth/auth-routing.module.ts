@@ -5,6 +5,7 @@ import { MainComponent } from './pages/main/main.component';
 import { MismonedasComponent } from './pages/mismonedas/mismonedas.component';
 import { ListamonedasComponent } from './pages/listamonedas/listamonedas.component';
 import { VentanamonedasComponent } from './pages/ventanamonedas/ventanamonedas.component'
+import { LoginComponent } from './pages/login/login.component';
 
 const routes: Routes = [
   {
@@ -14,6 +15,7 @@ const routes: Routes = [
       { path: 'Mismonedas', component: MismonedasComponent },
       { path: 'Listamonedas', component: ListamonedasComponent },
       { path: 'Agregarmoneda', component: VentanamonedasComponent },
+      { path: 'Login', component: LoginComponent },
       { path: '**', redirectTo: 'Mismonedas' },
     ],
   },

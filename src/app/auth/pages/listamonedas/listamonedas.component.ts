@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
 import { GlobalmonedasService } from '../../services/globalmonedas.service';
 
 @Component({
@@ -9,11 +10,18 @@ import { GlobalmonedasService } from '../../services/globalmonedas.service';
 export class ListamonedasComponent implements OnInit {
   public Monedas: any[] = [];
 
-  constructor(private GlobalmonedasService: GlobalmonedasService) {}
+  constructor(
+    private GlobalmonedasService: GlobalmonedasService,
+    private router: Router
+  ) {}
 
   ngOnInit(): void {
     this.GlobalmonedasService.getMonedas().subscribe((res) => {
       this.Monedas = res.data;
     });
+  }
+
+  gotoMisMonedas() {
+    this.router.navigateByUrl('/auth/Mismonedas');
   }
 }

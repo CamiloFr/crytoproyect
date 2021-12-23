@@ -7,7 +7,7 @@ import axios from 'axios';
   providedIn: 'root',
 })
 export class GlobalmonedasService {
-  private baseAPI = `http://localhost:1000/api/`;
+  private baseAPI = `https://cryptocurrecny.herokuapp.com/api/`;
   private token: string = '';
   usuario: string = '';
   idusuario: number = 0;

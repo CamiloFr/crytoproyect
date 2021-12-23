@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { GlobalmonedasService } from '../../services/globalmonedas.service';
 import alert from 'sweetalert2';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-mismonedas',
@@ -15,7 +16,10 @@ export class MismonedasComponent implements OnInit {
   MonedaSeleccionada: any = 1;
   Item: any;
 
-  constructor(private GlobalmonedasService: GlobalmonedasService) {}
+  constructor(
+    private GlobalmonedasService: GlobalmonedasService,
+    private router: Router
+  ) {}
 
   ngOnInit(): void {
     if (this.GlobalmonedasService.usuario === '') {
@@ -39,27 +43,27 @@ export class MismonedasComponent implements OnInit {
     }
   }
   cerrarModalAgregarMoneda() {
-    this.ModalAgregarMoneda = false;
+    return this.ModalAgregarMoneda = false;
   }
   abrirModalAgregarMoneda() {
-    this.ModalAgregarMoneda = true;
+    return this.ModalAgregarMoneda = true;
   }
   modalEditarDocumentos(data: any) {
     this.Item = data;
-    this.ModalEditarDocumentos = true;
+    return this.ModalEditarDocumentos = true;
   }
   cerrarModalEditarDocumentos() {
-    this.ModalEditarDocumentos = false;
+    return this.ModalEditarDocumentos = false;
   }
   monedaSeleccionadaChange(value: any) {
-    this.MonedaSeleccionada = value;
+    return this.MonedaSeleccionada = value;
   }
   borrarMonedaCrypto(data: any) {
     this.GlobalmonedasService.borrarMonedaUsuario(
       data.idmonedausuario
     ).subscribe((res: any) => {
       alert.fire('Exito', 'La moneda fue removida');
-      this.MisMonedas = this.MisMonedas.filter(
+      return this.MisMonedas = this.MisMonedas.filter(
         (x) => x.idmonedausuario !== data.idmonedausuario
       );
     });
@@ -73,7 +77,7 @@ export class MismonedasComponent implements OnInit {
     let moneda = this.Monedas.filter(
       (x) => x.idmoneda === parseInt(this.MonedaSeleccionada)
     );
-    console.log(this.MonedaSeleccionada, moneda)
+    console.log(this.MonedaSeleccionada, moneda);
     if (moneda.length > 0) {
       let usuario = {
         nombreusuario_monedas: this.GlobalmonedasService.usuario,
@@ -95,10 +99,10 @@ export class MismonedasComponent implements OnInit {
         (res) => {
           console.log(res);
           alert.fire('Exito', 'La moneda fue cambiada');
-          this.MisMonedas = this.MisMonedas.map((x) => {
+          return this.MisMonedas = this.MisMonedas.map((x) => {
             console.log(x.simbolo, this.Item.simbolo);
             if (x.simbolo === this.Item.simbolo) {
-              console.log("aca", moneda);
+              console.log('aca', moneda);
               return {
                 ...x,
                 simbolo: moneda[0].simbolo,
@@ -145,7 +149,7 @@ export class MismonedasComponent implements OnInit {
         (res: any) => {
           console.log(res);
           alert.fire('Exito', 'La moneda fue asociada');
-          this.MisMonedas = [...this.MisMonedas, res.data];
+          return this.MisMonedas = [...this.MisMonedas, res.data];
         },
         (error: any) => {
           if (error.error.mensaje) {
@@ -154,5 +158,12 @@ export class MismonedasComponent implements OnInit {
         }
       );
     }
+  }
+  gotoListarMonedas() {
+    return this.router.navigateByUrl('/auth/Listamonedas');
+  }
+
+  gotoIniciarSesion() {
+    return this.router.navigateByUrl('/auth/Login');
   }
 }

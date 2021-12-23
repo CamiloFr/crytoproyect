@@ -1,0 +1,24 @@
+<div class="container-center">
+  <div class="card width-100 border-radius-11 no-margin padding-login">
+    <div class="row width-100 padding-2 border-bottom-707070 no-margin">
+      <div class="col">
+        <h3 class="texto-titulo">Sign In</h3>
+      </div>
+    </div>
+    <div class="row no-margin width-100 padding-top-2">
+      <div class="col justify-content-center">
+        <input #usuariologin placeholder="user name" (change)="usuarioSeleccionadaChange(usuariologin.value)" />
+      </div>
+    </div>
+    <div class="row no-margin width-100 padding-top-2">
+      <div class="col justify-content-center">
+        <input #passwordlogin type="password" placeholder="password" (change)="contrasenaSeleccionadaChange(passwordlogin.value)" />
+      </div>
+    </div>
+    <div class="padding-top-2 justify-content-center">
+      <button type="button" class="btn btn-warning border-radius-2rem" (click)="iniciarSesion()">
+        SIGN IN
+      </button>
+    </div>
+  </div>
+</div>
